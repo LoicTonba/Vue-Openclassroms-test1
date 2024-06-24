@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mon Application Vue.js</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Ma première application Vue.js !</h1>
+            <p>J'ai hate de créer des applications incroyables !</p>
+            <p>{{ info }}</p>
+            <p>{{ message }}</p>
+            <p>{{ answerToLife }}</p>
+            <p>{{ groceries }}</p>
+            <p>{{ timeForLunch }}</p>
+
+            <!-- Réaliser le calcul -->
+            <p>{{ (2 + 8) * 10 }}</p>
+            
+            <!-- Appeler des méthodes de string -->
+            <p>{{ "alexia".toUpperCase() }}</p>
+
+            <!-- Opérateurs ternaires -->
+            <p>{{ 2 > 0  }}</p>
+
+            <!-- Si (if) l'utilisateur a les autorisations par défaut, afficher ce qui suit -->
+            <section v-if="userPermission === 'default'">
+                <p>Vos droits sont restreints dans l'appli web</p>
+            </section>
+
+            <!-- Sinon et si l'utilisateur a les autorisations administrateur, afficher ce qui suit -->
+            <section v-else-if="userPermission === 'admin'">
+                <p>Vous avez la majorite des droits dans l'appli web</p>
+            </section>
+
+            <!-- Si l'utilisateur n'a aucune autorisation, afficher ce qui suit -->
+            <section v-else>
+                <p>Vous avez Tous les droits dans l'appli web car vous etes SUPER ADMIN</p>
+            </section>
+
+            <ul>
+                <li v-for="api in apiResponse"><a v-bind:href="api.url">{{ item.name }}</a></li>
+            </ul>
+
+            <button @click="showParagrah = !showParagrah">Afficher le paragraphe</button>
+            <P v-show="showParagrah">TONBA LOIC senior vue js</P>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        
+        <!-- Contenu temporairement caché pour cet exemple -->
+        <!-- <script>
+            const app = new Vue()
+                el: '#app'
+        </script> -->
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Bonjour OpenClassrooms 👋', // String
+                    answerToLife: 42, // Number
+                    groceries: ['Pommes', 'Bananes','Noix de coco'], // Arrays
+                    timeForLunch: false, // Boolean
+                    info: { // Object
+                        topic: 'VueJS',
+                        length: 5
+                    },
+                    userPermission: 'admin',
+                    apiResponse: [
+                        {name: 'GitHub', url: 'https://www.github.com'},
+                        {name: 'Twitter', url: 'https://www.twitter.com'},
+                        {name: 'Netlify', url: 'https://www.netlify.com'}
+                    ], // Arrays of object
+                    showParagrah : false
+                }
+            })
+        </script>
+        <!-- <div id="app">
+            <h1>{{ message }}</h1>
+        </div>
+        <script>
+            // Vue n'est pas encore chargé donc une ReferenceError devrait etre retournée
+            console.log(Vue)
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script>
+            // La console devrait maintenant afficher une fonction
+            console.log(Vue)
+        </script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Bonjour 👋'
+                }
+            })
+        </script> -->
+    </body>
+</html>

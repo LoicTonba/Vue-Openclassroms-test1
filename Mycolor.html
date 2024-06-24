@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Partie 1 : Ma couleur préférée</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Ma couleur préférée</h1>
+
+            <div>
+                <h2>Montrer ma couleur préférée</h2>
+                <button v-on:click="alertColor('rouge')">Cliquer ici !</button>
+                <button @click="alert('Bonjour')">Salutation</button>
+            </div>
+
+            <div>
+                <h2>Changer ma couleur préférée {{ favoriteColor }}</h2>
+                <label for="change-color">Changer la couleur :</label>
+                <input id="change-color" type="text" v-model="favoriteColor">
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    favoriteColor: 'bleu'
+                },
+                computed: {
+                    label() {
+                        return ': ' + this.favoriteColor
+                    }
+                },
+                methods: {
+                    alertColor(colorLabel) {
+                        alert('Ma couleur préférée ' + colorLabel)
+                    },
+                    // showColor() {
+                    //     alert(this.favoriteColor);
+                    // },
+                    changeColor() {
+                        // Change la propriété data
+                        this.favoriteColor = 'turquoise'
+                        // Appelle une méthode différente et passe une propriété calculée
+                        this.alertColor(this.label)
+                        // this.favoriteColor = document.getElementById('change-color').value;
+                    }
+                },
+            })
+        </script>
+    </body>
+</html>
